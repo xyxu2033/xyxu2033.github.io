@@ -4,3 +4,4 @@ node_modules/
 db.json
 public/
 .DS_Store
+_config.yml
