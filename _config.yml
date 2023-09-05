@@ -3,16 +3,19 @@
 #################################################################
 
 # Site
-title: NexT
-description: NexT - An elegant and powerful theme for Hexo.
-keywords: "Hexo, NexT"
+title: Xiaoyang Xu
+subtitle: 'Blog & Homepage'
+author: 'Xiaoyang "Dyxx" Xu'
+description: "Xiaoyang Xu's Blog & Academic Personal Homepage"
+keywords: "Xiaoyang Xu, Academic Personal Homepage, Computer Science, Undergraduate, Blog"
 language: en
 timezone: UTC
 
 # URL
-url: https://theme-next.js.org
-permalink: :title/
-permalink_defaults:
+#url: https://theme-next.js.org
+#permalink: :title/
+#permalink_defaults:
+url: https://SkiperDyxx.github.io
 
 # Directory
 source_dir: source
