@@ -45,7 +45,7 @@ jobs:
       - name: Install Dependencies
         run: npm install && npm uninstall hexo-renderer-marked && npm install hexo-renderer-pandoc
       - name: Check Pandoc
-        run: pandoc --version
+        run: sudo apt install pandoc
       - name: Build with Hexo
         run: npx hexo g
       - name: Upload artifact
