@@ -40,7 +40,7 @@ creative_commons:
 # ============================================================= #
 
 menu:
-  home: / || fa fa-bell
+  Blog: / || fa fa-bell
 
 #  Docs:
     #default: /docs/ || fa fa-book
@@ -95,7 +95,7 @@ menu:
     #Troubleshooting: /troubleshooting.html || fa fa-life-ring
 
   #Plugins: /plugins/ || fa fa-flask
-  archives: /archives/ || fa fa-archive
+  #archives: /archives/ || fa fa-archive
   CV: /cv || fa fa-id-card
   Publications: /pub || fa fa-book
   #sitemap: /sitemap.xml || fa fa-sitemap
@@ -117,13 +117,13 @@ sidebar:
   offset: 12
 
 avatar:
-  url: /images/logo.svg
+  url: /images/avatar.jpg
   rounded: true
 
 social:
-  GitHub: https://github.com/next-theme || fab fa-github
-  Crowdin: https://crowdin.com/project/hexo-theme-next || fa fa-globe-asia
-  RSS: /atom.xml || fa fa-rss
+  GitHub: https://github.com/SkiperDyxx || fab fa-github
+  Mastodon: https://mastodon.social/@ExSpirdKyx || fab fa-mastodon
+  Zhihu: https://www.zhihu.com/people/dyxx-62 || fab fa-zhihu
 
 social_icons:
   enable: true
@@ -141,12 +141,12 @@ toc:
 # ============================================================= #
 
 footer:
-  since: 2014
+  since: 2023
   icon:
     name: fa fa-heart
     animated: true
     color: "#808080"
-  copyright: NexT
+  copyright: Xiaoyang Xu
 
 
 # ============================================================= #
@@ -162,7 +162,7 @@ symbols_count_time:
   item_text_total: true
 
 post_edit:
-  enable: true
+  enable: false
   url: https://github.com/next-theme/theme-next-docs/edit/master/source/
 
 
@@ -186,7 +186,7 @@ back2top:
   scrollpercent: true
 
 github_banner:
-  enable: true
+  enable: false
   permalink: https://github.com/next-theme/hexo-theme-next
   title: Fork NexT on GitHub
 

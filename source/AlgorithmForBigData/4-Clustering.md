@@ -1,0 +1,272 @@
+---
+title: 第四章：聚类划分
+mathjax: true
+---
+$\require{physics}$
+
+聚类划分的主要目标是：将数据集 $A$ 划分成 $k$ 个不相交的子集 $C_1, C_2, \cdots, C_k$，满足同一个子集中的点距离比较近，不同子集中的点距离比较远。这时我们将这 $k$ 个子集称为 $k$ 个聚类。这个目标非常宽泛，后文将给出细化解释
+
+# 基于中心的聚类划分
+
+## $k-$均值/中值/中心
+
+给定 $\mathbb{R}^d$ 中包含 $n$ 个点的数据集 $A$，度量函数 $D$（例如 $D$ 可以取二范数 $D(\vec x,\vec y) = \norm{\vec x -\vec y}_2$）与参数 $q\geq 1, k\in\mathbb{N}_+$，基于中心的聚类划分可以被描述为：找到 $k$ 个中心点 $\vec c_1,\vec c_2, \cdots,\vec c_k\in\mathbb{R}^d$，使得 $\sum_{i = 1}^nD(\vec a_i, \set{\vec c_j}_{j = 1}^k)^q$ 最小，其中 $D(\vec a, C)\triangleq \min_{\vec c\in C}D(\vec a, \vec c)$，也就是 $\vec a$ 到点集 $C$ 中点距离的最小值
+
+* 当 $q = 1$ 的时候，目标函数为最小化 $\sum_{i = 1}^nD\qty(\vec a_i, \set{\vec c_j}_{j = 1}^k)$，被称为 **$k-$中值 ($k-$median)**
+* 当 $q = 2$ 的时候，目标函数为最小化 $\sum_{i = 1}^nD\qty(\vec a_i, \set{\vec c_j}_{j = 1}^k)^2$，被称为 **$k-$均值 ($k-$means)**
+* 当 $q \to\infty$ 的时候，目标函数为最小化 $\max_{i = 1}^nD\qty(\vec a_i, \set{\vec c_j}_{j = 1}^k)$，被称为 **$k-$中心 ($k-$center)**
+
+> $k-$中心的目标函数是这样得出的：最小化 $\sum_{i = 1}^nD\qty(\vec a_i, \set{\vec c_j}_{j = 1}^k )^q$ 等价于最小化 $\qty(\sum_{i = 1}^nD\qty(\vec a_i, \set{\vec c_j}_{j = 1}^k)^q)^{\frac 1q}$。当 $q\to\infty$ 的时候，后者就等价于 $\max_{i = 1}^nD\qty(\vec a_i, \set{\vec c_j}_{j = 1}^k)$
+
+对于数据集 $A$，上文定义了目标函数来衡量某 $k$ 个中心点的优劣。当找到了某个目标函数下最优的中心点后，我们将 $A$ 划分成 $k$ 个聚类的无交并 $C_1\sqcup \cdots\sqcup C_k$，满足 $\vec a\in C_i\implies D(\vec a, \vec c_i) \leq D(\vec a, \vec c_j)\forall j = 1, 2, \cdots, n$ 即可
+
+> 如果有 $\vec a$ 到中心点 $\vec c_i$ 与 $\vec c_j$ 的距离一样近，我们既可以将其放进聚类 $C_i$ 也可以将其放进聚类 $C_j$
+
+## Lloyd 算法 - $k-$均值聚类划分算法
+
+对于<font color = blue>欧式距离</font> $D(\vec x, \vec y) = \norm{x - y}_2$，输入数据集 $A\subset \mathbb{R}^d$ 与聚类数目 $k\in\mathbb{N}_+$，Lloyd 算法可以被描述成：
+
+1. 随意地选择 $\vec c_1, \cdots, \vec c_k\in\mathbb{R}^d$
+2. 重复如下两步，直到 $\vec c_1, \cdots, \vec c_k$ 不再改变：
+   1. 对于 $i = 1, 2, \cdots, n$，如果点 $\vec a_i$ 所在聚类的中心不是与其最近的中心，那么就取出 $\vec a_i$ 并将其放在其最近的中心点所对应的聚类中
+   2. 对于 $i = 1, 2, \cdots, k$，将中心点 $\vec c_i$ 改为 $C_i$ 的重心 $\vec c(C_i)\triangleq \frac 1{\abs{C_i}}\sum_{\vec a\in C_i}\vec a$
+3. 返回 $k$ 个中心点 $\vec c_1, \cdots, \vec c_k$ 与 $k$ 个聚类 $C_1\sqcup \cdots\sqcup C_k$
+
+在分析 Lloyd 算法之前，首先需要指出的是，$k-$均值问题是 NP-Hard 的。特别地，当 ${\rm P\neq NP}$ 的时候，以下命题成立。这就表明不会有性能特别好、结果质量特别高的算法：
+
+* $k = 2$ 时不存在时间复杂度为 ${\rm poly}(n, d)$ 的 $k-$均值算法
+* $d = 2$ 时不存在时间复杂度为 ${\rm poly}(n, k)$ 的 $k-$均值算法
+* 不存在时间复杂度为 ${\rm poly}(n, k, d)$ 的且近似比为 $1.0013$ 的 $k-$均值近似算法
+
+> $k-$均值问题是一个最小化问题。在一个最小化问题中，近似比为 $\alpha$ 的近似算法，或者说近似算法，被描述为：找到原问题的一个可行解，使得解的值不超过最优解的 $\alpha$ 倍。例如，一个 $1.0013\ k-$均值算法可以被描述为找到一些中心点 $\set{\vec c_i}_{i = 1}^k$ 满足 $\sum_{\vec a\in A}D\qty(\vec a_i, \set{\vec c_i}_{i = 1}^k)\leq 1.0013\sum_{\vec a\in A}D\qty(\vec a_i, \set{\vec c_i}_{i = 1}^k)$
+>
+> 思考题：构造一个在 $k = d = 2$ 前提下时间复杂度为 ${\rm poly}(n)$ 的 $k-$均值算法
+
+Lloyd 算法不能保证得到最优解，仅通过 4 个点就能构造出一种近似比为任意大的反例。但是从直观上能得到一个比较好的解，因为以下引理保证了当 $k = 1$ 的时候 Lloyd 算法一定可以得到最优解
+
+**引理：**对于任意的 $\vec x\in\mathbb{R}^d$ 与有限集 $A\subset \mathbb{R}^d$，设 $\vec c(A')\triangleq \frac 1{\abs{A'}}\sum_{\vec a\in A'}\vec a$ 被定义为数据集 $A'$ 的重心
+$$
+\sum_{\vec a\in A'}\norm{\vec a - \vec x}_2^2 = \sum_{\vec a\in A'}\norm{\vec a - \vec c(A')} + \abs{A'}\norm{\vec c(A') - \vec x}
+$$
+**证明：**首先由 $\vec c(A') = \frac 1{\abs{A'}}\sum_{\vec a\in A'}\vec a$ 的定义可以得知 $\sum_{\vec a\in A'}\vec a - \abs{A'}\vec c(A') = \vec 0$，也就是 $\sum_{\vec a\in A'}(\vec a - \vec c(A')) = \vec 0$。所以
+$$
+\begin{aligned}
+\sum_{\vec a\in A'}\norm{\vec a - \vec x}_2^2 &= \sum_{\vec a\in A'}
+\qty(\norm{\vec a - \vec c(A')}_2^2 + \norm{\vec c(A') - \vec x}_2^2 + 2(\vec c(A') - \vec x)^\intercal(\vec a - \vec c(A')))\\
+&= \sum_{\vec a\in A'}\norm{\vec a - \vec c(A')}_2^2 + \abs{A'}\norm{\vec c(A') - \vec x}_2^2 + 2(\vec c(A') - \vec x)^\intercal \sum_{\vec a\in A'}(\vec a - \vec c(A'))\\
+&= \sum_{\vec a\in A'}\norm{\vec a - \vec c(A')}_2^2 + \abs{A'}\norm{\vec c(A') - \vec x}_2^2 + 2(\vec c(A') - \vec x)^\intercal \cdot \vec 0\\
+&= \sum_{\vec a\in A'}\norm{\vec a - \vec c(A')}_2^2 + \abs{A'} \norm{\vec c(A') - \vec x}_2^2
+\end{aligned}
+$$
+
+<hr>
+
+由二范数的正定性知 $\norm{\vec c(A') - \vec x}_2^2\geq 0$，这也就表明 $\sum_{\vec a\in A'}\norm{\vec a - \vec x}_2^2\geq \sum_{\vec a\in A'}\norm{\vec a - \vec c(A)}_2^2$，说明当 $k = 1$ 的时候 $k-$means 中心就是点集的重心
+
+接下来讨论 Lloyd 算法的时间性能。在这里我们能给出
+
+**定理：**Lloyd 算法可以在有限步内运行结束
+
+**证明：**首先注意到将 $n$ 个点划分成 $k$ 个（非空）聚类的方案数不超过 $n^k$，所以方案数是有限的。设有 $m$ 种将 $n$ 个结点划分为 $k$ 个（非空）聚类的方案 $\mathcal C_1, \mathcal C_2, \cdots, \mathcal C_m$
+
+在每次循环结束时，Lloyd 算法的 $k$ 个中心点 $\vec c_1, \vec c_2, \cdots, \vec c_k$ 的位置完全是由这 $k$ 个聚类的性质而定的，因为循环的第二步会对每个 $i = 1, 2, \cdots, k$ 将 $\vec c_i$ 设置成聚类 $C_i$ 的重心。设聚类划分方案 $\mathcal C = \set{C_1, C_2, \cdots, C_k}$ 的权值为聚类中心 $\vec c_i$ 为 $C_i$ 重心 $\vec c(C_i)$ 时的 $k-$均值权值（也就是 $\sum_{i = 1}^n D(\vec a_i, \set{\vec c(C_1), \vec c(C_2), \cdots, \vec c(C_k)})^2$），再按照该权值将这 $m$ 个聚类划分方案从小到大排序为  $\mathcal C^{[1]}, \mathcal C^{[2]}, \cdots, \mathcal C^{[m]}$，那么 $\mathcal C^{[i]}$ 的权值小于 $\mathcal C^{[j]}$ 的权值可以推出 $i < j$
+
+每次循环结束时当前的聚类划分方案一定是这 $m$ 个中的一种，设第 $i$ 次迭代结束时的聚类划分方案是 $\mathcal C^{[t_i]}$。在没有收敛的时候，迭代的第 1 步会让目标函数变小，而迭代的第 2 步不会让目标函数变大，所以每次迭代会严格让目标函数变小，这意味着 $t_1 > t_2 > \cdots$
+
+显然 $\set{t_i}$ 是一个自然数序列，所以 $t_2\leq t_1 - 1, t_3\leq t_2 - 1\leq t_1 - 2$，以此类推，这表明 Lloyd 算法的迭代次数必不可能大于 $t_1\leq m\leq n^k$。算法一定在有限的次数内迭代完成
+
+<hr>
+
+可以证明，Lloyd 算法的最坏时间复杂度是 $2^{\Omega(\sqrt n)}$ 的
+
+## $k-$均值++
+
+与 Lloyd 算法的目标相同，$k-$均值++算法旨在对<font color = blue>欧氏距离</font>下的 $k-$均值问题特例求解。首先给出其算法：
+
+1. 对 $A$ 使用 *$D^2-$采样* 采样出 $k$ 个点，记为 $C = \set{\vec c_1, \cdots, \vec c_k}$
+2. 以这个 $C$ 为中心点集合运行 Lloyd 算法
+
+算法中提到了 *$D^2-$采样*。在介绍其概念之前，先明确一些记号：
+
+* $D$ 记为 $D_{\ell_2}$，为欧氏距离，也就是 $D(\vec x, \vec y) = \norm{\vec x - \vec y}_2$
+* 对于点 $\vec a$ 与点集 $C$，$D(\vec a, C)\triangleq \min_{\vec c\in C}D(\vec a, \vec c)$
+* 对于点集 $A$ 与点集 $C$，$\mathcal D^2(A, C)\triangleq \sum_{\vec a\in A}D(\vec a, C)^2 = \sum_{\vec a\in A}\min_{\vec c\in C}D(\vec a, \vec c)^2$，也就是 $k-$均值的目标函数
+
+接下来介绍 *$D^2-$采样*。对于任意的有限集 $C\subset \mathbb{R}^d$，$P_C$ 是某个定义在 $A$ 上的概率分布，为：
+$$
+P_C(\vec a) = \frac{D(\vec a, C)^2}{\mathcal D^2(A, C)} = \frac{D(\vec a, C)^2}{\sum_{\vec b\in A}D(\vec b, C)^2} = \frac{\min_{\vec c\in C}\norm{\vec a - \vec c}_2^2}{\sum_{\vec b\in A}\min_{\vec c_b\in C}\norm{\vec b - \vec c_b}^2_2}\propto\mathcal D^2(\vec a, C)^2
+$$
+
+> 这表明点 $\vec a$ 与点集 $C$ 的距离越远就越可能被抽中
+
+$D^2$ 采样出 $k$ 个点的流程如下：
+
+1. 从 $A$ 中均匀地抽样出某个点 $\vec c_1\in A$，记 $C^{(1)} \gets \set{\vec c_1}$
+2. 循环 $i = 2, 3, \cdots, k$：
+   1. 以 $P_{C^{(i - 1)}}$ 为 $D^2$ 采样的概率分布抽取 $\vec c_i$
+   2. 令 $C^{(i)}\gets C^{(i - 1)}\cup\set{\vec c_i}$
+3. 返回 $C^{(k)}$
+
+$D^2$ 采样的性质有理论保证：
+
+**定理：**设 $C$ 是对数据集 $A$ 与整数 $k$ 通过 $D^2-$采样得出的 $k$ 个点，$C^*$ 是 $k-$均值问题的最优解。那么
+$$
+\mathbb E\qty[\mathcal D^2(A, C)]\leq 8(\ln k+2)\mathcal D^2(A, C^*)
+$$
+> 下文中 $\vec c$ 与 $\vec c(A)$ 不是相同的记号。$\vec c$ 表示 $D^2$ 采样中抽出的点，$\vec c(A)$ 表示 $A$ 的重心 $\frac 1{\abs{A}}\sum_{\vec a\in A}\vec a$
+
+分析一下算法的正确性。首先讨论 $k = 1$ 的特殊情况。对于最优解 $C^*$，由先前的讨论可以得知 $C^* = \set{\vec c(A)}$，也就是 $A$ 的重心。接下来我们讨论随机抽取 $A$ 中的点 $\vec c$ 组成的 $C$ 与 $A$ 之间的距离，只需要证明以下引理即可：
+
+**引理：**设 $S\subset \mathbb{R}^d$ 是一个有限集合，设 $\vec c$ 是 $S$ 中的点均匀抽样出的一个点，那么
+$$
+\mathbb E\qty[\mathcal D^2(S, \set{\vec c}] = 2\mathcal D^2(S, \set{\vec c(S)})
+$$
+**证明（引理）：**因为 $\sum_{\vec a\in S}(\vec a - \vec c(S)) = \vec 0$，所以
+$$
+\begin{aligned}
+\mathbb E\qty[\mathcal D^2(S, \set{\vec c})] &= \frac 1{\abs{S}}\sum_{\vec b\in S}\mathcal D^2(S, \set{\vec b})\\
+&= \frac 1{\abs{S}}\sum_{\vec b\in S}\sum_{\vec a\in S}\norm{\vec a - \vec b}_2^2\\
+&= \frac 1{\abs{S}}\sum_{\vec b\in S}\sum_{\vec a\in S}\qty(\norm{\vec a - \vec c(S)}_2^2 - (\vec b - \vec c(S))^\intercal(\vec a - \vec c(S)) + \norm{\vec b - \vec c(S)}^2_2)\\
+&= \frac 1{\abs{S}}\sum_{\vec b\in S}\qty(\abs{S}\norm{\vec b - \vec c(S)}_2^2 - (\vec b - \vec c(S))^\intercal \sum_{\vec a\in S}\qty(\vec a - \vec c(S)) + \sum_{\vec a\in S}\norm{\vec a - \vec c(S)}_2^2)\\
+&= \sum_{\vec b\in S}\norm{\vec b - \vec c(S)}_2^2 +\sum_{\vec a\in S}\norm{\vec a - \vec c(S)}_2^2\\
+&= 2\mathcal D^2(S, \set{\vec c(S)})
+\end{aligned}
+$$
+
+> 这可以得出一个在计算几何中非常有意义的恒等式：
+> $$
+> \sum_{\vec a\in S}\norm{\vec a - \vec c(S)}_2^2 = \frac 1{2\abs{S}}\sum_{\vec a\in S}\sum_{\vec b\in S}\norm{\vec a - \vec b}_2^2
+> $$
+
+接下来讨论对于任意 $k$ 的正确性。抽取一个新点时有两种可能，一种可能是是抽出来的新点来自最优划分中一个新的聚类，可以由以下引理保证
+
+**引理：**设 $S\subset\mathbb{R}^d$ 与 $C\subset\mathbb{R}^d$ 是两个有限点集，$\vec x$ 是由 $P_C$ 为概率分布抽样出的点，那么
+$$
+\mathbb E\qty[\mathcal D^2(S, C\cup\set{\vec x})]\leq 8\mathcal D^2(S_1, \set{\vec c(S)})
+$$
+另一种可能是抽出来的新点与原有的某个点来自最优划分的同一个聚类。限于篇幅，引理证明的详情见老师提供的讲义
+
+### 局部搜索
+
+本课程介绍的最后一种 $k-$均值算法，或者说初始解生成法可以这样描述：
+
+1. 任选 $T = \set{\vec c_1, \vec c_2, \cdots, \vec c_k}\subseteq A$
+2. 如果存在 $\vec c\in T$ 与 $\vec c\in A$ 满足 $\mathcal D^2(A, T + \set{\vec c'} - \set{\vec c})< \mathcal D^2(A, T)$，那么更新 $T\gets T + \set{\vec c'} - \set{\vec c}$
+3. 返回 $T$
+
+其正确性可以由以下定理保证：
+
+**定理：**输出的 $T$ 至少是最优解的 50 倍保证，也就是 $D(A, T)\leq 50(D(A, C^*))$
+
+## $k-$均值与降维
+
+我们重新表述 $k-$均值问题：
+
+给定一个点集 $A$ 与 $k\geq 1$，*基于划分的 (partition-based) $k-$均值问题* 被描述为：找到 $A$ 的一个划分 $A_1, A_2, \cdots, A_k$，使得下式最小化：
+$$
+\mathscr D\qty(\set{A_i}_{i = 1}^k)\triangleq\sum_{i = 1}^k\mathcal D^2(A_i, \vec c(A_i)) = \sum_{i = 1}^n\sum_{\vec a\in A_i}\norm{\vec a - \vec c(A_i)}_2^2
+$$
+先前定义的 $k-$均值问题可以看做基于中心的 $k-$均值问题，也就是中心点集 $C$ 可以任意选择，但是聚类方案 $\set{A_i}_{i = 1}^k$ 是被 $C$ 诱导出的，但是这里基于划分的 $k-$均值问题是划分可以任意选择，中心点集被划分方案诱导出
+
+由 Lloyd 算法很容易得知，最小化基于中心的 $k-$均值问题与最小化基于划分的 $k-$均值问题是等价的
+
+注意到以下等式恒成立
+$$
+\mathscr D\qty(\set{A_i}_{i = 1}^k) = \sum_{i = 1}^n\sum_{\vec a\in A_i}\norm{\vec a - \vec c(A_i)}_2^2 = \sum_{i = 1}^n\frac 1{2\abs{A_i}}\sum_{\vec a\in A_i}\sum_{\vec b\in A_i}\norm{\vec a - \vec b}_2^2
+$$
+而如果我们使用 JL 引理对 $A$ 中的点进行随机投影降维可以得知 $\abs{\norm{f(\vec a) - f(\vec b)}_2 - \norm{\vec a - \vec b}_2}\leq \epsilon\norm{\vec a - \vec b}_2$ 会在 $d' =\Omega\qty(\frac{\log n}{\epsilon^2})$ 时以很大的概率成立。不难推出
+$$
+\abs{\mathscr D\qty(\set{A_i}_{i = 1}^k) - \mathscr D\qty(\set{f(A_i)}_{i = 1}^k)}\leq\epsilon \mathscr D\qty(\set{A_i}_{i = 1}^k)
+$$
+这样我们就可以得出以下算法，其近似比为 $\alpha + \epsilon$（证明略）：
+
+1. 计算 $\epsilon' = \frac{\epsilon}{6\alpha}$ 与 $d' = \Omega\qty(\frac{\log n}{\epsilon^2})$
+2. 以 $\epsilon'$ 与 $d'$ 为参数使用 JL 引理计算随机投影 $f(A)$
+3. 使用一个 $\alpha$ 近似算法计算投影后的 $k-$均值问题以得到一个聚类划分方案 $\set{F_i}_{i = 1}^k$
+4. 使用 $\set{F_i}_{i = 1}^k$ 诱导出 $\set{A_i}_{i = 1}^k$，也就是 $A_i = \set{x: f(x)\in F_i, x\in A}$
+5. 返回 $\set{A_i}_{i = 1}^k$
+
+## $k-$中值
+
+关于 $k-$中值问题的讨论也一般是基于欧氏距离的，也就是找到一个中心点集 $C$ 满足 $\abs{C} = k$ 且下式最小化：
+$$
+\mathcal D(A, C) \triangleq \sum_{\vec a\in A}D(\vec a, C) = \sum_{\vec a\in A}\min_{\vec c\in C}\norm{\vec a - \vec c}_2
+$$
+这是一个 NP 完全问题。解决这个问题的近似算法主要有两种：线性规划与局部搜索。线性规划可以达到 4 的近似比，但是需要额外添加至多 $k$ 个中心点。局部搜索的近似比可以达到 $6$，且算法与先前类似（证明略）：
+
+1. 从某个 $S\subseteq A$ 且 $\abs{S} = k$ 开始
+2. 如果存在某个 $\vec a\in A\setminus S$ 与 $\vec r\in S$ 满足 $\mathcal D(A, S - \vec r + \vec a) < \mathcal D(A, S)$，那么就更新 $S\gets S - \vec r + \vec a$，然后重复本步骤
+3. 输出 $S$
+
+## $k-$中心
+
+回忆 $k-$中心问题为找到一个中心点集 $C$ 满足 $\abs{C} = k$ 且下式最小化：
+$$
+\overline{\mathcal D}(A, C)\triangleq \max_{\vec a\in A}\min_{i = 1}^kD(\vec a, \vec c_i)
+$$
+当 $k = 1$ 的时候，这个问题等价于找到某个点 $\vec c_1$ 满足点集 $A$ 中与其最远点的距离最小，也就是找到点集 $A$ 外接球的球心。但这本身并不是一件容易的事情。基于贪心的思想，对于一般的 $k$，Gonzalez 给出如下算法：
+
+1. 任选 $\vec c_1\in A$
+2. 依次遍历 $i = 2, 3, \cdots, k$。对每个 $i$，找到使得 $\min_{j = 1}^{i - 1}D(\vec x, \vec c_j)$ 最大的点 $\vec x\in A$，并将其记为 $\vec c_i$。也就是 $\vec c_i\gets \arg\max_{x\in A}\min_{j = 1}^{i - 1}D(\vec x, \vec c_j)$
+3. 输出 $\set{\vec c_i}_{i = 1}^k$
+
+**定理：**Gonzalez 算法是一个 2 近似算法，也就是 $\overline{\mathcal D}(A, C)\leq 2\overline{\mathcal D}(A, C^*)$
+
+这里不给出完整的证明，但是给出 $k = 1$ 的特殊情况，也就是任选一个中心点 $\vec c_1\in A$，均有 $\max_{\vec a\in A}D(\vec a, \vec c_1)\leq 2\max_{\vec a\in A}D(\vec a, \vec c^*)$，其中 $\vec c^*$ 是点集 $A$ 的外接球球心，不一定在 $A$ 中。这时由三角不等式可以得出：
+
+$$
+D(\vec a, \vec c_1)\leq D(\vec a, \vec c^*) + D(\vec c_1, \vec c^*)\leq 2\max_{\vec a\in A}D(\vec a, \vec c^*)
+$$
+左式小于右式恒成立。因为右式是常量，所以左式的最大值也一定小于右式，也就表明 $\max_{\vec a\in A}D(\vec a\in A)\leq 2\max_{\vec a\in A}D(\vec a, \vec c^*)$ 成立
+
+## $k-$均值核心集
+
+我们首先定义带权重的 $k-$均值距离。对于有限集 $S\subset \mathbb{R}^d$ 与权重函数 $\omega: S\mapsto \mathbb{R}_+$，我们定义 $\mathcal D^2(S, \omega, C)\triangleq \sum_{\vec a\in S}\omega(\vec a)\mathcal D^2(\vec a, C)$。先前讲过的 $k-$均值相当于是 $\omega\equiv 1$ 的特例
+
+给定 $k\in\mathbb{N}_+, \epsilon > 0$ 与 $A\subset\mathbb{R}^d, \abs{A} = n$，我们希望找到这样的一个有限集 $S$，使得对于任意大小为 $k$ 的集合 $C\subset\mathbb{R}^d$，都有 $\abs{\mathcal D^2(S, \omega, C) - \mathcal D^2(A, C)} \leq \epsilon \mathcal D^2(A, C)$，也就是说对 $(S, \omega)$ 做 $k-$均值聚类来找出聚类中心点与对 $A$ 做 $k-$均值聚类是差不多的。这时 $S$ 被称为核心集。本节的剩余内容将给出一个大小为 $\order{k\epsilon^{-d}\log n}$ 的核心集 $S$，这在大数据的应用背景下可以在很大程度上减少需要处理的点数
+
+在给出这个核心集之前，我们首先需要一些定义与引理。限于篇幅与课程相关度，这里略去证明：
+
+**定义：**一个半径为 $r$ 的球的 **$\epsilon$ 球覆盖** 被定义为：找到一个点集 $B$，满足该球内的所有点到点集 $B$ 内最近点的距离不超过 $\epsilon r$，也就是以 $B$ 中的点为球心，$\epsilon r$ 为半径画出的球可以完整覆盖原本半径为 $r$ 的球
+
+这个定义表明 $\epsilon$ 球覆盖的方案不会随着 $r$ 变化而显著变化（指在 $r$ 变化后相应地对球心进行仿射变换就能得到新的覆盖方案），但是会随着 $\epsilon$ 变化而变化显著。在考虑任意球的 $\epsilon$ 球覆盖方案时，我们只需要考虑对单位球的覆盖方案即可。 
+
+**引理：**存在一个大小不超过 $\qty(1 + \frac 2\epsilon)^d$ 的 $\epsilon$ 球覆盖
+
+这里带大家直观理解一下 $d = 1$ 时的证明：一维单位球是数轴上的区间 $[-1, 1]$。显然，在这个区间内选一串数满足相邻两个数的差值恰好为 $\epsilon$（即选 $B = \set{-1 + \epsilon, -1 + \epsilon, 2\cdots, -1 + \left\lfloor\frac 2\epsilon\right\rfloor\epsilon}$）是一个 $\epsilon$ 球覆盖，大小为 $\left\lfloor \frac 2\epsilon\right\rfloor \approx (1 + \epsilon)^1$
+
+**定理：**存在一个 $k-$均值问题多项式复杂度的 $10$ 近似算法
+
+**引理（广义三角不等式）：**设 $\vec a, \vec b, \vec c$ 是欧式空间中的 $3$ 个点，。对于任意的 $\epsilon\in(0, 1)$，均有
+$$
+\abs{\norm{\vec a- \vec c}_2^2 - \norm{\vec b - \vec c}^2_2}\leq \frac {12}\epsilon\norm{\vec a - \vec b}_2^2 + 2\epsilon\norm{\vec a - \vec c}_2^2\\
+\abs{\mathcal D^2(\vec a, C) - \mathcal D^2(\vec b, C)}\leq\frac{12}{\epsilon}\mathcal D^2(\vec a, \vec b) + 2\epsilon\mathcal D^2(\vec a, C)
+$$
+
+<hr>
+接下来我们给出算法描述：
+
+**输入：**点集 $A$，聚类数 $k$
+
+1. 使用某个多项式近似算法计算 $A$ 的 $10$ 近似 $k-$均值聚类 $C_1, C_2, \cdots, C_k$，其中心为 $\vec c_1, \vec c_2, \cdots, \vec c_K$
+2. 令 $j$ 依次遍历 $1, 2, \cdots, k$
+   1. 对 $i = 0, 1, \cdots, \log 10n$，记 $B^{(i)}$ 为半径是 $\sqrt{\frac{2^i}n\sum_{\vec x\in C_j}\norm{\vec x - \vec c_j}^2_2}$，中心在 $\vec c_j$ 处的球
+   2. 求得 $B^{(i)}$ 的 $\frac \epsilon{192}$ 球覆盖 $S_j^{(i)}$
+   3. 令 $S_j\gets \bigcup_{i = 0}^{\log 10n}S_j^{(i)}$
+3. 令 $S\gets \bigcup_{j = 1}^kS_j$
+4. 对每个 $\vec y\in S$，令 $\omega(\vec y)$ 表示 $A$ 中这样的点的数目：$\vec y$ 是该点在 $S$ 中点的最近邻。也就是 $\omega(\vec y)\gets \abs{\set{\vec a\in A : \norm{\vec a - \vec y}_2^2 = \mathcal D^2(\vec a, S)}}$
+5. 输出 $(S, \omega)$
+
+接下来给出对这个算法的分析。首先证明：
+
+**引理：**设 $F$ 是一个大小为 $n$ 的集合，$B^{(i)}$ 是中心在原点，半径为 $r_i \triangleq \sqrt{\frac{2^i}n\sum_{\vec x\in F}\norm{\vec x - \vec c_j}_2^2}$ 的球，$S^{(i)}$ 是 $B^{(i)}$ 的一个 $\frac \epsilon 3$ 球覆盖。记 $S = \bigcup_{i = 1}^{\log 10n}S^{(i)}$，那么
+$$
+\sum_{\vec x\in F}\min_{\vec s\in S}\norm{\vec x - \vec s}^2_2\leq \epsilon^2\sum_{\vec x\in F}\norm{\vec x}_2^2
+$$
+**证明：**我们将 $F$ 分成两个子集 $F_{\rm close}$ 与 $F_{\rm far}$ 以便于左式求和，其中 $F_{\rm close} = \set{\vec y\in F :\norm{\vec y}_2^2\leq \frac 1n\sum_{\vec x\in F}\norm{\vec x}_2^2}$，而 $F_{\rm far}$ 是 $F_{\rm close}$ 的补集，也就是 $\set{\vec y\in F :\norm{\vec y}_2^2 >\frac 1n\sum_{\vec x\in F}\norm{\vec x}_2^2}$
+
+关于 $F_{\rm close}$，考虑到 $\abs{F_{\rm close}}\leq \abs{F} = n$，我们有
+$$
+\sum_{\vec x\in F_{\rm close}}\min_{\vec x\in S^{(0)}}\norm{\vec x - \vec s}_2^2 \leq\abs{F_{\rm close}}\cdot \frac 1n\sum_{\vec x\in F}\norm{\vec x}_2^2\frac{\epsilon^2}9 \leq\sum_{\vec x\in F}\frac{\epsilon^2}9\sum_{\vec x\in F}\norm{\vec x}_2^2
+$$
+$F_{\rm far}$ 中的点一定不在 $B^{(0)}$ 中（因为 $B_0$ 的半径 $r_0$ 满足 $r_0^2 = \frac{2^0}n\sum_{\vec x\in F}\norm{\vec x - \vec c_j}_2^2 = \frac 1n\sum_{\vec x\in F}\norm{\vec x - \vec c_j}_2^2$）。设 其在 $B^{(i)}\setminus 
