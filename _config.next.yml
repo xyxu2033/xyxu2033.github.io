@@ -17,22 +17,22 @@ custom_file_path:
 # ====================== Scheme Settings ====================== #
 # ============================================================= #
 
-scheme: Muse
+#scheme: Muse
 #scheme: Mist
-#scheme: Pisces
+scheme: Pisces
 #scheme: Gemini
 
-darkmode: true
+  #darkmode: true
 
 
 # ============================================================= #
 # ================= Site Information Settings ================= #
 # ============================================================= #
 
-creative_commons:
-  license: by-nc-sa
-  size: big
-  sidebar: true
+#creative_commons:
+  #license: by-nc-sa
+  #size: big
+#  sidebar: true
 
 
 # ============================================================= #
@@ -40,7 +40,8 @@ creative_commons:
 # ============================================================= #
 
 menu:
-  Blog: / || fa fa-bell
+  About Me: / || fas fa-user
+    # Blog: /blog || fas fa-blog
 
 #  Docs:
     #default: /docs/ || fa fa-book
@@ -96,8 +97,9 @@ menu:
 
   #Plugins: /plugins/ || fa fa-flask
   #archives: /archives/ || fa fa-archive
-  CV: /cv || fa fa-id-card
-  Publications: /pub || fa fa-book
+  Resume: /resume || fas fa-file-alt
+  Conferences: /conference || fas fa-users
+  Publications: /pub || fas fa-book
   #sitemap: /sitemap.xml || fa fa-sitemap
   #commonweal: /404/ || fa fa-heartbeat
 

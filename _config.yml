@@ -4,17 +4,18 @@
 
 # Site
 title: 'Xiaoyang Xu'
-subtitle: 'Blog & Homepage'
+subtitle: 'Academic Homepage'
 author: 'Xiaoyang Xu'
-description: "Xiaoyang Xu's Blog & Academic Personal Homepage"
-keywords: "Xiaoyang Xu, Academic Personal Homepage, Computer Science, Undergraduate, Blog"
+description: "Xiaoyang Xu's Academic Personal Homepage"
+keywords: "Xiaoyang Xu, Academic Personal Homepage, Computer Science, Undergraduate"
 timezone: UTC
 
 # URL
 #url: https://theme-next.js.org
-#permalink: :title/
 #permalink_defaults:
-url: https://SkiperDyxx.github.io
+url: https://xyxu2033.github.io
+permalink: blog/:title/
+#root: /blog/
 
 # Directory
 source_dir: source
@@ -63,8 +64,8 @@ date_format: YYYY-MM-DD
 time_format: HH:mm:ss
 
 # Pagination
-per_page: 5
-pagination_dir: page
+# per_page: 5
+# pagination_dir: page
 
 # Extensions
 theme: next
