@@ -2,7 +2,6 @@ scheme: Pisces
 menu:
   Home: / || fas fa-blog
   Resume: /resume || fas fa-file-alt
-  Conferences: /conference || fas fa-users
   Publications: /pub || fas fa-book
 menu_settings:
   icons: true
@@ -10,3 +9,9 @@ menu_settings:
 avatar:
   url: /images/avatar.jpg
   rounded: true
+favicon:
+  small: /images/favicon-16x16.png
+  medium: /images/favicon-32x32.png
+  apple_touch_icon: /images/apple-touch-icon.png
+  safari_pinned_tab: /images/logo.svg
+
