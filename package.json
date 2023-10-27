@@ -1,42 +1,27 @@
 {
-  "name": "theme-next-docs",
-  "version": "8.18.0",
+  "name": "hexo-site",
+  "version": "0.0.0",
   "private": true,
+  "scripts": {
+    "build": "hexo generate",
+    "clean": "hexo clean",
+    "deploy": "hexo deploy",
+    "server": "hexo server"
+  },
   "hexo": {
     "version": "6.3.0"
   },
-  "description": "Elegant and powerful theme for Hexo.",
-  "scripts": {
-    "highlight": "node lib/highlight.js",
-    "start": "hexo s",
-    "update": "node lib/update.js",
-    "version": "git add source",
-    "lint": "markdownlint -c .markdownlint.json source/docs"
-  },
-  "repository": "next-theme/theme-next-docs",
-  "keywords": [
-    "hexo",
-    "theme",
-    "next"
-  ],
-  "author": "iissnan <iissnan@gmail.com>",
-  "license": "CC-BY-NC-SA-4.0",
-  "bugs": {
-    "url": "https://github.com/next-theme/theme-next-docs/issues"
-  },
-  "homepage": "https://theme-next.js.org",
   "dependencies": {
-    "hexo": "6.3.0",
+    "hexo": "^6.3.0",
     "hexo-generator-archive": "^2.0.0",
-    "hexo-generator-feed": "3.0.0",
-    "hexo-generator-index": "3.0.0",
-    "hexo-generator-searchdb": "1.4.1",
-    "hexo-renderer-pandoc": "^0.4.0",
-    "hexo-renderer-stylus": "3.0.0",
-    "hexo-server": "3.0.0",
-    "hexo-theme-next": "8.18.0"
-  },
-  "devDependencies": {
-    "markdownlint-cli": "0.35.0"
+    "hexo-generator-category": "^2.0.0",
+    "hexo-generator-index": "^3.0.0",
+    "hexo-generator-tag": "^2.0.0",
+    "hexo-renderer-ejs": "^2.0.0",
+    "hexo-renderer-marked": "^6.0.0",
+    "hexo-renderer-stylus": "^3.0.0",
+    "hexo-server": "^3.0.0",
+    "hexo-theme-landscape": "^1.0.0",
+    "hexo-theme-next": "^8.18.2"
   }
 }

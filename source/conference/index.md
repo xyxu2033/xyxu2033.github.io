@@ -3,7 +3,9 @@ title: Conferences
 date: 2023-09-05
 ---
 
-# 10th Heidelberg Laureate Forum
+{% for post in site.tags.conference %}
+  # [{{ post.title }}]({{ post.path }})
+  {{ post.excerpt }}
 
-Heidelberg, Germany
-*Sep. 22 - 29, 2023*
+{% endfor %}
+

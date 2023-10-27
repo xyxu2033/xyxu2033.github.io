@@ -12,7 +12,7 @@ date: 2023-09-05
 **GPA:** 3.93/4.3
 **Rank:** 16/271
 **Weighted Average:** 91.23
-**Transcript:** [Download here](/cv/ScholasticRecord.pdf)
+**Transcript:** [Download here](/resume/ScholasticRecord.pdf)
 
 During the pursuit of my bachelor's degree, I acquired expertise in the following areas:
 
@@ -27,7 +27,7 @@ During the pursuit of my bachelor's degree, I acquired expertise in the followin
 
 **[Heng Yang](https://hankyang.seas.harvard.edu/) @ Harvard** *2023.08 - Current*
 
-This work is mainly about solving SDP proposed in searching Lyapnov certificate. Searching Lyapnov certificate could be transformed into an SOS problem, which could be casted into a SDP problem. Such SDP problem has many properties, e.g. the constraints are all linear, the objective is only to find a feasible solution, the coefficient matrix in linear constraints is sparce. As current second order algorithms like interior point method requires the expensive calculation of Hessian, we are exploiting the first order properties of this problem for saving time and memory.
+This work is mainly about exploiting Correlative Sparsity in Sum of Squares problems derived from control theory. After the decision process is discretized, the constraints are only between status in adjacent time points, which makes this problem sparse in nature. We are developing theory and tools for this special sparsity.
 
 ## Research Assistant
 
@@ -57,11 +57,11 @@ Participating in the Algorithms & Complexity Theory Seminar, led by Professor [S
 
 **Chinese:** Mothertongue
 
-**English:** [106 in TOEFL iBT](/cv/TOEFL.pdf): Reading 30, Listening 30, Speaking 22, Writing 24
+**English:** [107 in TOEFL iBT](/resume/TOEFL.pdf): Reading 27, Listening 29, Speaking 23, Writing 28
 
 # Honors and Awards
 
-## Silver Medal in the ICPC Asia Regional Contests - Received for 3 consecutive years ([2022 Nanjing](/cv/cert/icpc/2022nj.pdf), [2021 Nanjing](/cv/cert/icpc/2021nj.pdf), [2021 Shanghai](/cv/cert/icpc/2021sh.pdf), [2020 Nanjing](cv/cert/icpc/2020nj.pdf))
+## Silver Medal in the ICPC Asia Regional Contests - Received for 3 consecutive years ([2022 Nanjing](/resume/cert/icpc/2022nj.pdf), [2021 Nanjing](/resume/cert/icpc/2021nj.pdf), [2021 Shanghai](/resume/cert/icpc/2021sh.pdf), [2020 Nanjing](resume/cert/icpc/2020nj.pdf))
 
 **ICPC Foundation**
 
@@ -73,28 +73,28 @@ Participated in the ICPC Asia Regional Contests, a prestigious competitive progr
 
 Competed in the Lanqiao Cup, a renowned programming competition in China, focusing on individual coding skills. Got multiple awards:
 
-* 14th Edition: [First Place](/cv/cert/lanqiao/2023ah.jpg) in Python Programming (Anhui Province)
-* 13th Edition: [First Prize](/cv/cert/lanqiao/2022ah.jpg) in C/C++ Programming (Anhui Province) and [Third Prize](/cv/cert/lanqiao/2022.jpg) in National Finals
+* 14th Edition: [First Place](/resume/cert/lanqiao/2023ah.jpg) in Python Programming (Anhui Province)
+* 13th Edition: [First Prize](/resume/cert/lanqiao/2022ah.jpg) in C/C++ Programming (Anhui Province) and [Third Prize](/resume/cert/lanqiao/2022.jpg) in National Finals
 
-## Bronze Award in the CCF Collegiate Computer System & Programming Contest - Received for 2 consecutive years ([2022](/cv/cert/ccsp/2022.jpg), [2021](/cv/cert/ccsp/2021.png))
+## Bronze Award in the CCF Collegiate Computer System & Programming Contest - Received for 2 consecutive years ([2022](/resume/cert/ccsp/2022.jpg), [2021](/resume/cert/ccsp/2021.png))
 
 **China Computer Federation**
 
 Participated in the CCF Collegiate Computer System & Programming Contest, a competitive programming event organized by the China Computer Federation (CCF). The contest focused on computer systems and programming, competing against individuals from universities across China.
 
-## [First Prize](/cv/cert/ahcpc.png) in the 2021 Anhui Collegiate Programming Contest
+## [First Prize](/resume/cert/ahcpc.png) in the 2021 Anhui Collegiate Programming Contest
 
 **Department of Education of Anhui Province**
 
 Achieved a first prize in the 2021 Anhui Collegiate Programming Contest, a preliminary round for the International Collegiate Programming Contest (ICPC) and China Collegiate Programming Contest (CCPC).
 
-## [First Prize](/cv/cert/cmc.png) in the 13th National University Student Mathematics Competition (Non-math Major)
+## [First Prize](/resume/cert/cmc.png) in the 13th National University Student Mathematics Competition (Non-math Major)
 
 **Chinese Mathematical Society**
 
 Participated in the 13th CMC, a prestigious mathematics competition, challenging students from universities nationwide in advanced mathematical problem-solving.
 
-## [Bronze Medal](/cv/cert/ccpc.jpg) for the 2021 China Collegiate Programming Contest, Weihai Site
+## [Bronze Medal](/resume/cert/ccpc.jpg) for the 2021 China Collegiate Programming Contest, Weihai Site
 
 **Committee for CCPC**
 
@@ -112,7 +112,7 @@ I received the 1987 Alumni-funded Innovation Scholarship, a recent award establi
 
 The China Optics Valley Scholarship recognizes students who excel academically and show promise in innovation and entrepreneurship. The scholarship also prioritizes students who have achieved outstanding performance in national and university-level competitions and students who have actively participated in innovation and entrepreneurship projects and competitions. Each scholarship awardee will receive CNY 10,000. Award received, certificate pending.
 
-## [Yang Yong-Man Scholarship](/cv/cert/yangyongman.png)
+## [Yang Yong-Man Scholarship](/resume/cert/yangyongman.png)
 
 **University of Science and Technology of China** *Jan 2022*
 
