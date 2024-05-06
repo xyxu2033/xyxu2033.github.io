@@ -3,6 +3,6 @@ title: Publications
 date: 2023-09-05
 ---
 
-# A Novel Skip Orthogonal List for Dynamic Optimal Transport Problem
+# A Novel Skip Orthogonal List for Dynamic Network Simplex Method
 
-**<u>Xiaoyang Xu</u>** and Hu Ding [To Appear in AAAI24](https://arxiv.org/pdf/2310.18446.pdf)
+**<u>Xiaoyang Xu</u>** and Hu Ding [In Submission](https://arxiv.org/pdf/2310.18446.pdf)
