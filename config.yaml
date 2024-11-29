@@ -64,7 +64,7 @@ params:
     imageHeight: 120
     imageTitle: Xiaoyang Xu
     about: '
-      I am a 1st-year PhD Student in Computer Science at <ins>[University of California, Santa Barbara](https://cs.ucsb.edu/)</ins>, where I am fortunate to be advised by Prof. <ins>[Daniel Lokshtanov](https://sites.cs.ucsb.edu/~daniello/)</ins>. My research interest lies broadly around Theoretical Computer Science, especially in **Data Structures**, **Graph Algorithms** and **Combinatorial Optimization**. Please see my [CV](/xiaoyangxu_cv.pdf) for details.
+      I am a 1st-year PhD Student in Computer Science at <ins>[University of California, Santa Barbara](https://cs.ucsb.edu/)</ins>, where I am fortunate to be advised by Prof. <ins>[Daniel Lokshtanov](https://sites.cs.ucsb.edu/~daniello/)</ins>. My research interest lies broadly around Theoretical Computer Science, especially in **Data Structures**, **Graph Algorithms** and **Combinatorial Optimization**. Please see my [<ins>\[CV\]</ins>](/xiaoyangxu_cv.pdf) for details.
 
 
       Besides research, I am also interested in competitive programming. Currently I serve as the co-coash of the UCSB ICPC teams.
