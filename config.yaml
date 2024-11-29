@@ -92,6 +92,8 @@ params:
       url: "https://scholar.google.com/citations?user=ikmQnPcAAAAJ"
     - name: github
       url: "https://github.com/xyxu2033"
+    - name: linkedin
+      url: "https://www.linkedin.com/in/xiaoyang-xu-a983502a7"
     - name: x
       url: "https://x.com/xyxu2033"
 
