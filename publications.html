@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Publications page for an academic personal homepage." />
+    <meta name="description" content="Papers and preprints by Xiaoyang Xu, with links to PDFs, slides, and posters." />
     <title>Xiaoyang Xu | Publications</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,13 +11,13 @@
       href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Source+Sans+3:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/css/site.css?v=20260407a" />
+    <link rel="stylesheet" href="assets/css/site.css?v=20260929c" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-header">
       <div class="topbar site-shell">
-        <a class="brand brand--mark-only" href="index.html" aria-label="Home">
+        <a class="brand" href="index.html" aria-label="Xiaoyang Xu — Home">
           <span class="brand-mark" aria-hidden="true">
             <svg viewBox="0 0 576 512" aria-hidden="true">
               <path
@@ -26,7 +26,7 @@
               />
             </svg>
           </span>
-          <span class="sr-only">Home</span>
+          <span class="brand-label">Xiaoyang Xu</span>
         </a>
         <nav class="site-nav" aria-label="Primary">
           <a href="index.html">Home</a>
@@ -37,62 +37,97 @@
       </div>
     </header>
 
-    <main id="main-content">
+    <main id="main-content" tabindex="-1">
       <section class="page-header reading-shell">
         <div class="page-header__text">
-          <p class="section-kicker">Publications</p>
-          <h1>Papers and preprints</h1>
-          <p>A complete list of current papers and preprints.</p>
+          <h1>Publications</h1>
+          <p>Papers and preprints, with PDFs, slides, and posters.</p>
+          <nav class="section-nav" aria-label="Publication years">
+            <a href="#year-2027">2027</a>
+            <a href="#year-2026">2026</a>
+            <a href="#year-2024">2024</a>
+          </nav>
         </div>
       </section>
 
       <section class="page-layout reading-shell">
         <div class="page-stack">
-          <section class="content-section">
-            <p class="year-label">2026</p>
+          <section class="record-section publication-section" aria-labelledby="year-2027">
+            <h2 class="year-label" id="year-2027">2027</h2>
             <div class="pub-year">
-              <article class="pub-entry">
-                <h3>Learning-Augmented Streaming Algorithms for Approximating Boolean Max-CSPs</h3>
-                <p>Yinhao Dong, Pan Peng, Ali Vakilian, Santhoshini Velusamy, <strong>Xiaoyang Xu</strong></p>
-                <p>In Submission</p>
-                <!-- <p class="pub-note">A concise description of the problem, the main idea, and the central result.</p> -->
-                <div class="pub-links">
-                  <!-- <a class="link-chip" href="assets/pdf/publication-sample.pdf" target="_blank" rel="noopener noreferrer">PDF</a> -->
-                  <a class="link-chip" href="assets/pdf/LAAstream-modified-v2.pdf">Slides</a>
+              <article class="pub-entry record-entry" id="pairing-heap">
+                <div class="entry-content">
+                  <h3>Efficiency of the Pairing Heap</h3>
+                  <p class="entry-authors"><strong>Xiaoyang Xu</strong>, Robert E. Tarjan</p>
+                  <p class="entry-meta">To appear in the ACM-SIAM Symposium on Discrete Algorithms (SODA), 2027</p>
                 </div>
-              </article>
-
-              <article class="pub-entry">
-                <h3>Parameterized Approximation of Rectangle Stabbing</h3>
-                <p>Huairui Chu, Ajaykrishnan E S, Daniel Lokshtanov, Anikait Mundhra, Thomas Schibler, <strong>Xiaoyang Xu</strong>, Jie Xue</p>
-                <p>In Submission</p>
-                <!-- <p class="pub-note">A shorter project entry that explains one focused contribution within the broader research area.</p> -->
-                <div class="pub-links">
-                  <a class="link-chip" href="https://arxiv.org/pdf/2604.04282" target="_blank" rel="noopener noreferrer">PDF</a>
+                <div class="resource-links">
+                  <a class="link-chip" href="assets/pdf/Pairing_Heap_Poster.pdf" target="_blank" rel="noopener noreferrer">Poster</a>
                 </div>
               </article>
             </div>
           </section>
 
-          <section class="content-section">
-            <p class="year-label">2024</p>
+          <section class="record-section publication-section" aria-labelledby="year-2026">
+            <h2 class="year-label" id="year-2026">2026</h2>
             <div class="pub-year">
-              <article class="pub-entry">
-                <h3>Fast and Certifiable Trajectory Optimization</h3>
-                <p>Shucheng Kang, <strong>Xiaoyang Xu</strong>, Jay Sarva, Ling Liang, Heng Yang</p>
-                <p>Workshop on the Algorithmic Foundations of Robotics (WAFR), 2024</p>
-                <!-- <p class="pub-note">A direct summary that stays close to the actual contribution instead of selling the project.</p> -->
-                <div class="pub-links">
+              <article class="pub-entry record-entry">
+                <div class="entry-content">
+                  <h3>Pure Pairing Heaps</h3>
+                  <p class="entry-authors">Robert E. Tarjan, <strong>Xiaoyang Xu</strong></p>
+                  <p class="entry-meta">In submission</p>
+                </div>
+                <div class="resource-links">
+                  <a class="link-chip" href="https://arxiv.org/pdf/2607.23118" target="_blank" rel="noopener noreferrer">PDF</a>
+                </div>
+              </article>
+
+              <article class="pub-entry record-entry">
+                <div class="entry-content">
+                  <h3 id="learning-augmented">Learning-Augmented Streaming Algorithms for Approximating Boolean Max-CSPs</h3>
+                  <p class="entry-authors">Yinhao Dong, Pan Peng, Ali Vakilian, Santhoshini Velusamy, <strong>Xiaoyang Xu</strong></p>
+                  <p class="entry-meta">To appear in the Conference on Neural Information Processing Systems (NeurIPS), 2026</p>
+                </div>
+                <div class="resource-links">
+                  <a class="link-chip" href="assets/pdf/LAAstream-modified-v2.pdf" target="_blank" rel="noopener noreferrer">Slides</a>
+                  <a class="link-chip" href="http://home.ustc.edu.cn/~yhdong/files/poster-csp-sufe.pdf" target="_blank" rel="noopener noreferrer">Poster</a>
+                </div>
+              </article>
+
+              <article class="pub-entry record-entry">
+                <div class="entry-content">
+                  <h3 id="rectangle-stabbing">Parameterized Approximation of Rectangle Stabbing</h3>
+                  <p class="entry-authors">Huairui Chu, Ajaykrishnan E S, Daniel Lokshtanov, Anikait Mundhra, Thomas Schibler, <strong>Xiaoyang Xu</strong>, Jie Xue</p>
+                  <p class="entry-meta">European Symposium on Algorithms (ESA), 2026</p>
+                </div>
+                <div class="resource-links">
+                  <a class="link-chip" href="https://drops.dagstuhl.de/storage/00lipics/lipics-vol388-esa2026/LIPIcs.ESA.2026.69/LIPIcs.ESA.2026.69.pdf" target="_blank" rel="noopener noreferrer">PDF</a>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section class="record-section publication-section" aria-labelledby="year-2024">
+            <h2 class="year-label" id="year-2024">2024</h2>
+            <div class="pub-year">
+              <article class="pub-entry record-entry">
+                <div class="entry-content">
+                  <h3>Fast and Certifiable Trajectory Optimization</h3>
+                  <p class="entry-authors">Shucheng Kang, <strong>Xiaoyang Xu</strong>, Jay Sarva, Ling Liang, Heng Yang</p>
+                  <p class="entry-meta">Workshop on the Algorithmic Foundations of Robotics (WAFR), 2024</p>
+                </div>
+                <div class="resource-links">
                   <a class="link-chip" href="https://arxiv.org/pdf/2406.05846" target="_blank" rel="noopener noreferrer">PDF</a>
                 </div>
               </article>
 
-              <article class="pub-entry">
-                <h3>A Novel Skip Orthogonal List for Dynamic Optimal Transport Problem</h3>
-                <p><strong>Xiaoyang Xu</strong>, Hu Ding</p>
-                <p>AAAI Conference on Artificial Intelligence (AAAI), 2024</p>
-                <!-- <p class="pub-note">A longer-form article or interdisciplinary paper that rounds out the current record.</p> -->
-                <div class="pub-links">
+              <article class="pub-entry record-entry">
+                <div class="entry-content">
+                  <h3>A Novel Skip Orthogonal List for Dynamic Optimal Transport Problem</h3>
+                  <p class="entry-authors"><strong>Xiaoyang Xu</strong>, Hu Ding</p>
+                  <p class="entry-meta">AAAI Conference on Artificial Intelligence (AAAI), 2024</p>
+                </div>
+                <div class="resource-links">
                   <a class="link-chip" href="https://arxiv.org/pdf/2310.18446" target="_blank" rel="noopener noreferrer">PDF</a>
                   <a class="link-chip" href="assets/pdf/AAAI24_Poster.pdf" target="_blank" rel="noopener noreferrer">Poster</a>
                 </div>
@@ -105,7 +140,7 @@
 
     <footer class="footer">
       <div class="footer-inner site-shell">
-        <span>Last updated April 2026.</span>
+        <span>Last updated September 2026.</span>
         <nav class="footer-nav" aria-label="Secondary">
           <a href="misc.html">Misc</a>
         </nav>

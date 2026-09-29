@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Academic homepage for a PhD student with a portrait, brief research summary, and links to publications, activities, and contact information."
+      content="Xiaoyang Xu, PhD student in Computer Science at UC Santa Barbara. Research in data structures, graph algorithms, and combinatorial optimization."
     />
     <title>Xiaoyang Xu | Home</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -14,13 +14,13 @@
       href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Source+Sans+3:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/css/site.css?v=20260407a" />
+    <link rel="stylesheet" href="assets/css/site.css?v=20260929c" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-header">
       <div class="topbar site-shell">
-        <a class="brand brand--mark-only" href="index.html" aria-label="Home">
+        <a class="brand" href="index.html" aria-label="Xiaoyang Xu — Home">
           <span class="brand-mark" aria-hidden="true">
             <svg viewBox="0 0 576 512" aria-hidden="true">
               <path
@@ -29,7 +29,7 @@
               />
             </svg>
           </span>
-          <span class="sr-only">Home</span>
+          <span class="brand-label">Xiaoyang Xu</span>
         </a>
         <nav class="site-nav" aria-label="Primary">
           <a href="index.html" aria-current="page">Home</a>
@@ -40,24 +40,14 @@
       </div>
     </header>
 
-    <main id="main-content">
-      <section class="home-intro home-intro--minimal site-shell">
+    <main id="main-content" tabindex="-1">
+      <section class="home-intro site-shell" aria-labelledby="profile-name">
         <div class="home-intro__visual">
           <div class="home-intro__frame">
-            <img class="home-intro__image" src="https://avatars.githubusercontent.com/u/74895202" alt="Portrait of Xiaoyang Xu." />
+            <img class="home-intro__image" src="https://avatars.githubusercontent.com/u/74895202" alt="Portrait of Xiaoyang Xu." width="240" height="288" fetchpriority="high" />
           </div>
           <div class="profile-links" aria-label="Profile links">
             <!-- Comment out any individual link block below if you do not want to show it. -->
-
-            <!-- Email -->
-            <a class="profile-link" href="mailto:xiaoyangxu@cs.ucsb.edu" aria-label="Email" title="Email">
-              <svg viewBox="0 0 512 512" aria-hidden="true">
-                <path
-                  d="M64 112c-8.8 0-16 7.2-16 16v22.1l172.5 141.6c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zm-16 100.2V384c0 8.8 7.2 16 16 16h384c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64h384c35.3 0 64 28.7 64 64v256c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z"
-                  fill="currentColor"
-                />
-              </svg>
-            </a>
 
             <!-- GitHub -->
             <a
@@ -161,27 +151,16 @@
               </svg>
             </a>
 
-            <!-- CV -->
-            <a
-              class="profile-link profile-link--label"
-              href="assets/pdf/cv.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Curriculum vitae"
-              title="Curriculum vitae"
-            >
-              CV
-            </a>
           </div>
           <p class="home-intro__email">
-            <span class="home-intro__email-label">Email</span>
+            <span class="sr-only">Email</span>
             <a href="mailto:xiaoyangxu@cs.ucsb.edu">xiaoyangxu@cs.ucsb.edu</a>
           </p>
         </div>
 
         <div class="home-intro__content">
-          <h1 class="home-intro__name">Xiaoyang Xu</h1>
-          <div class="home-intro__summary home-intro__summary--compact">
+          <h1 class="home-intro__name" id="profile-name">Xiaoyang Xu</h1>
+          <div class="home-intro__summary">
             <p>
               I am a PhD student in Computer Science at University of California, Santa Barbara, where I am fortunate to be advised by Prof. <a href="https://sites.cs.ucsb.edu/~daniello/">Daniel Lokshtanov</a>. Before that, I graduated with B.Eng. in Computer Science with the highest honor from University of Science and Technology of China in 2024.
             </p>
@@ -195,7 +174,7 @@
 
     <footer class="footer">
       <div class="footer-inner site-shell">
-        <span>Last updated April 2026.</span>
+        <span>Last updated September 2026.</span>
         <nav class="footer-nav" aria-label="Secondary">
           <a href="misc.html">Misc</a>
         </nav>

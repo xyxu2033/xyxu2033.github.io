@@ -14,13 +14,13 @@
       href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Source+Sans+3:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/css/site.css?v=20260407a" />
+    <link rel="stylesheet" href="assets/css/site.css?v=20260929c" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-header">
       <div class="topbar site-shell">
-        <a class="brand brand--mark-only" href="index.html" aria-label="Home">
+        <a class="brand" href="index.html" aria-label="Xiaoyang Xu — Home">
           <span class="brand-mark" aria-hidden="true">
             <svg viewBox="0 0 576 512" aria-hidden="true">
               <path
@@ -29,7 +29,7 @@
               />
             </svg>
           </span>
-          <span class="sr-only">Home</span>
+          <span class="brand-label">Xiaoyang Xu</span>
         </a>
         <nav class="site-nav" aria-label="Primary">
           <a href="index.html">Home</a>
@@ -40,66 +40,160 @@
       </div>
     </header>
 
-    <main id="main-content">
+    <main id="main-content" tabindex="-1">
       <section class="page-header reading-shell">
         <div class="page-header__text">
-          <p class="section-kicker">Activities</p>
-          <h1>Professional activities</h1>
-          <p>Talks, teaching, academic service, and research visits.</p>
+          <h1>Activities</h1>
+          <p>Talks, teaching, awards, academic service, and research visits.</p>
+          <nav class="section-nav section-nav--activities" aria-label="Activity sections">
+            <a href="#talks-posters">Talks &amp; posters</a>
+            <a href="#teaching">Teaching</a>
+            <a href="#awards">Awards</a>
+            <a href="#service">Service</a>
+            <a href="#research-visits">Visits</a>
+          </nav>
         </div>
       </section>
 
       <section class="page-layout reading-shell">
         <div class="page-stack">
-          <section class="content-section" id="talks-posters">
-            <p class="section-kicker">Talks and Posters</p>
-            <h2>Presentations</h2>
-            <ul class="list-plain">
-              <li>
-                <strong>Learning-Augmented Streaming Algorithms for Approximating Max-DICUT</strong>, Algorithms Seminar, University of Bergen, Mar 12, 2026.
-                <a href="assets/pdf/LAAstream-modified-v2.pdf" target="_blank" rel="noopener noreferrer">Slides</a>
+          <section class="record-section" id="talks-posters" aria-labelledby="talks-heading">
+            <h2 id="talks-heading">Talks &amp; posters</h2>
+            <ul class="activity-list" role="list">
+              <li class="record-entry">
+                <div class="entry-content">
+                  <h3>Efficiency of Pairing Heaps</h3>
+                  <p class="entry-meta">Theory Lunch &middot; New York University Shanghai &middot; <time datetime="2026-09-16">September 16, 2026</time></p>
+                </div>
               </li>
-              <li>
-                <strong>Skip Orthogonal List for Dynamic Optimal Transport</strong>, AAAI Conference on Artificial Intelligence, 2024.
-                <a href="assets/pdf/AAAI24_Poster.pdf" target="_blank" rel="noopener noreferrer">Poster</a>
+              <li class="record-entry">
+                <div class="entry-content">
+                  <h3>Efficiency of Pairing Heaps</h3>
+                  <p class="entry-meta">ICBS 2026 College Poster Session</p>
+                </div>
+                <div class="resource-links">
+                  <a class="link-chip" href="assets/pdf/Pairing_Heap_Poster.pdf" target="_blank" rel="noopener noreferrer">Poster</a>
+                </div>
               </li>
-              <!-- <li><strong>[Tutorial or invited discussion]</strong> for [course, lab, or reading group], 2025.</li> -->
+              <li class="record-entry">
+                <div class="entry-content">
+                  <h3>Learning-Augmented Streaming Algorithms for Approximating Boolean Max-CSPs</h3>
+                </div>
+                <div class="resource-links">
+                  <a class="link-chip" href="http://home.ustc.edu.cn/~yhdong/files/poster-csp-sufe.pdf" target="_blank" rel="noopener noreferrer">Poster</a>
+                </div>
+              </li>
+              <li class="record-entry">
+                <div class="entry-content">
+                  <h3>Learning-Augmented Streaming Algorithms for Approximating Max-DICUT</h3>
+                  <p class="entry-meta">Algorithms Seminar &middot; University of Bergen &middot; <time datetime="2026-03-12">March 12, 2026</time></p>
+                </div>
+                <div class="resource-links">
+                  <a class="link-chip" href="assets/pdf/LAAstream-modified-v2.pdf" target="_blank" rel="noopener noreferrer">Slides</a>
+                </div>
+              </li>
+              <li class="record-entry">
+                <div class="entry-content">
+                  <h3>Skip Orthogonal List for Dynamic Optimal Transport</h3>
+                  <p class="entry-meta">AAAI Conference on Artificial Intelligence &middot; 2024</p>
+                </div>
+                <div class="resource-links">
+                  <a class="link-chip" href="assets/pdf/AAAI24_Poster.pdf" target="_blank" rel="noopener noreferrer">Poster</a>
+                </div>
+              </li>
             </ul>
           </section>
 
-          <section class="content-section">
-            <p class="section-kicker">Teaching and Mentoring</p>
-            <h2>Instruction</h2>
-            <ul class="list-plain">
-              <li>Teaching Assistant for
-                <ul class="list-plain">
-                  <li>Algorithmic Engineering (UCSB CMPSC 132), Fall 2025.</li>
-                  <li>Data Structures and Algorithms II (UCSB CMPSC 130B), Spring 2025, Winter 2025.</li>
-                  <li>Data Structures and Algorithms I (UCSB CMPSC 130A), Fall 2024, Spring 2026.</li>
-                  <li>Algorithms for Big Data (USTC 011186), Spring 2023. <a href="https://github.com/xyxu2033">Link to my lecture notes (Chinese)</a></li>
-                </ul>
+          <section class="record-section" id="teaching" aria-labelledby="teaching-heading">
+            <div class="section-label">
+              <h2 id="teaching-heading">Teaching</h2>
+              <p>Teaching assistant</p>
+            </div>
+            <ul class="activity-list" role="list">
+              <li class="record-entry">
+                <div class="entry-content">
+                  <h3>Data Structures and Algorithms I</h3>
+                  <p class="entry-meta">UCSB CMPSC 130A &middot; Spring 2026, Fall 2024</p>
+                </div>
+              </li>
+              <li class="record-entry">
+                <div class="entry-content">
+                  <h3>Algorithmic Engineering</h3>
+                  <p class="entry-meta">UCSB CMPSC 132 &middot; Fall 2025</p>
+                </div>
+              </li>
+              <li class="record-entry">
+                <div class="entry-content">
+                  <h3>Data Structures and Algorithms II</h3>
+                  <p class="entry-meta">UCSB CMPSC 130B &middot; Spring 2025, Winter 2025</p>
+                </div>
+              </li>
+              <li class="record-entry">
+                <div class="entry-content">
+                  <h3>Algorithms for Big Data</h3>
+                  <p class="entry-meta">USTC 011186 &middot; Spring 2023</p>
+                </div>
+                <div class="resource-links">
+                  <a class="link-chip" href="https://github.com/xyxu2033">Notes (Chinese)</a>
+                </div>
               </li>
             </ul>
           </section>
 
-          <section class="content-section">
-            <p class="section-kicker">Academic Service</p>
-            <h2>Service</h2>
-            <ul class="list-plain">
-              <li>Sub-reviewer for IWOCA 2026, ITCS 2026, ESA 2025.</li>
-              <li>Co-coach, UC Santa Barbara Competitive Programming Teams.</li>
-              <!-- <li>Organizer for <strong>[reading group, student seminar, or local meetup]</strong>.</li>
-              <li>Volunteer support for <strong>[lab event, departmental initiative, or community effort]</strong>.</li> -->
+          <section class="record-section" id="awards" aria-labelledby="awards-heading">
+            <h2 id="awards-heading">Honors &amp; awards</h2>
+            <ul class="activity-list" role="list">
+              <li class="record-entry">
+                <div class="entry-content">
+                  <h3>Outstanding Poster Award</h3>
+                  <p class="entry-meta">ICBS 2026 College Poster Session &middot; For <em>Efficiency of Pairing Heaps</em></p>
+                </div>
+                <div class="resource-links">
+                  <a class="link-chip" href="assets/pdf/Pairing_Heap_Poster.pdf" target="_blank" rel="noopener noreferrer">Poster</a>
+                </div>
+              </li>
             </ul>
           </section>
 
-          <section class="content-section">
-            <p class="section-kicker">Research Visits</p>
-            <h2>Research visits</h2>
-            <ul class="list-plain">
-              <li><strong>University of Bergen</strong>, with Prof. <a href="https://fedorvf.github.io/">Fedor V. Fomin</a>, Feb. 2026 - Mar. 2026.</li>
-              <li><strong>Toyota Technological Institute at Chicago</strong>, with Prof. <a href="https://sites.google.com/view/santhoshinivelusamy">Santhoshini Velusamy</a>, Jun. 2025 - Sep. 2025.</li>
-              <li><strong>Harvard University</strong>, with Prof. <a href="https://hankyang.seas.harvard.edu/">Heng Yang</a>, Jul. 2023 - Jan. 2024.</li>
+          <section class="record-section" id="service" aria-labelledby="service-heading">
+            <h2 id="service-heading">Academic service</h2>
+            <ul class="activity-list" role="list">
+              <li class="record-entry">
+                <div class="entry-content">
+                  <h3>Sub-reviewer</h3>
+                  <p class="entry-meta">SODA 2027 (twice), SOSA 2027, IWOCA 2026, ITCS 2026, ESA 2025</p>
+                </div>
+              </li>
+              <li class="record-entry">
+                <div class="entry-content">
+                  <h3>Co-coach</h3>
+                  <p class="entry-meta">UC Santa Barbara Competitive Programming Teams</p>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <section class="record-section" id="research-visits" aria-labelledby="visits-heading">
+            <h2 id="visits-heading">Research visits</h2>
+            <ul class="activity-list" role="list">
+              <li class="record-entry">
+                <div class="entry-content">
+                  <h3>University of Bergen</h3>
+                  <p class="entry-meta">With Prof. <a href="https://fedorvf.github.io/">Fedor V. Fomin</a> &middot; February&ndash;March 2026</p>
+                </div>
+              </li>
+              <li class="record-entry">
+                <div class="entry-content">
+                  <h3>Toyota Technological Institute at Chicago</h3>
+                  <p class="entry-meta">With Prof. <a href="https://sites.google.com/view/santhoshinivelusamy">Santhoshini Velusamy</a> &middot; June&ndash;September 2025</p>
+                </div>
+              </li>
+              <li class="record-entry">
+                <div class="entry-content">
+                  <h3>Harvard University</h3>
+                  <p class="entry-meta">With Prof. <a href="https://hankyang.seas.harvard.edu/">Heng Yang</a> &middot; July 2023&ndash;January 2024</p>
+                </div>
+              </li>
             </ul>
           </section>
         </div>
@@ -108,7 +202,7 @@
 
     <footer class="footer">
       <div class="footer-inner site-shell">
-        <span>Last updated April 2026.</span>
+        <span>Last updated September 2026.</span>
         <nav class="footer-nav" aria-label="Secondary">
           <a href="misc.html">Misc</a>
         </nav>
