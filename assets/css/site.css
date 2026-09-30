@@ -744,8 +744,7 @@ h3 {
   }
 
   .section-nav--activities {
-    display: grid;
-    grid-template-columns: repeat(3, max-content);
+    display: flex;
   }
 
   .footer-inner {
